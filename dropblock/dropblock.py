@@ -43,7 +43,7 @@ class DropBlock2D(nn.Module):
             gamma = self._compute_gamma(x)
 
             # sample mask
-            mask = (torch.rand(x.shape[0], *x.shape[2:]) < gamma).float()
+            mask = (torch.rand(x.shape[0], *x.shape[2:]) < gamma).half()
 
             # place mask on input device
             mask = mask.to(x.device)
@@ -113,7 +113,7 @@ class DropBlock3D(DropBlock2D):
             gamma = self._compute_gamma(x)
 
             # sample mask
-            mask = (torch.rand(x.shape[0], *x.shape[2:]) < gamma).float()
+            mask = (torch.rand(x.shape[0], *x.shape[2:]) < gamma).half()
 
             # place mask on input device
             mask = mask.to(x.device)
